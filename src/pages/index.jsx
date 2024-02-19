@@ -28,8 +28,8 @@ const IndexPage = () => {
         setSearchTerm(e.target.value);
     };
 
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
     };
 
     const filteredProducts = products.filter((product) => {
@@ -52,7 +52,7 @@ const IndexPage = () => {
                     </Link>
                 </div>
             </div>
-            <div className="mb-6 flex items-center">
+            <div className="container flex mx-auto mb-6 items-center">
                 <input
                     type="text"
                     value={searchTerm}
@@ -60,60 +60,29 @@ const IndexPage = () => {
                     placeholder="Search products"
                     className="border border-gray-300 rounded-md p-2 mr-4 focus:outline-none focus:border-blue-500"
                 />
+                </div>
+                <div className="container flex mx-auto mb-6 items-center">
                 <div className="flex items-center">
                     <span className="mr-4">Filter by Category:</span>
-                    <label className="inline-flex items-center mr-4">
-                        <input
-                            type="radio"
-                            name="category"
-                            value=""
-                            checked={selectedCategory === ""}
-                            onChange={() => handleCategoryChange("")}
-                            className="form-radio h-5 w-5 text-blue-600"
-                        />
-                        <span className="ml-2">All</span>
-                    </label>
-                    <label className="inline-flex items-center mr-4">
-                        <input
-                            type="radio"
-                            name="category"
-                            value="electronics"
-                            checked={selectedCategory === "electronics"}
-                            onChange={() => handleCategoryChange("electronics")}
-                            className="form-radio h-5 w-5 text-blue-600"
-                        />
-                        <span className="ml-2">Electronics</span>
-                    </label>
-                    <label className="inline-flex items-center mr-4">
-                        <input
-                            type="radio"
-                            name="category"
-                            value="clothing"
-                            checked={selectedCategory === "clothing"}
-                            onChange={() => handleCategoryChange("clothing")}
-                            className="form-radio h-5 w-5 text-blue-600"
-                        />
-                        <span className="ml-2">Clothing</span>
-                    </label>
-                    <label className="inline-flex items-center mr-4">
-                        <input
-                            type="radio"
-                            name="category"
-                            value="books"
-                            checked={selectedCategory === "books"}
-                            onChange={() => handleCategoryChange("books")}
-                            className="form-radio h-5 w-5 text-blue-600"
-                        />
-                        <span className="ml-2">Books</span>
-                    </label>
+                    <select
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                        className="form-select mr-4 bg-white border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-500"
+                    >
+                        <option value="">All</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="books">Books</option>
+                    </select>
                 </div>
-            </div>
+                </div>
+            
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {isLoading ? (
                     <div className="text-center">Loading...</div>
                 ) : filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
-                        <div key={product.id} className="bg-white shadow-md p-2 rounded-md transition duration-300 hover:shadow-lg">
+                        <div key={product.id} className="bg-white shadow-md p-6 rounded-md transition duration-300 hover:shadow-lg">
                             <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
                             <div className="text-xl font-semibold mb-2 text-gray-800">{product.name}</div>
                             <div className="text-gray-500 mb-2">Price: ₵{product.price}</div>
