@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { VITE_BACKEND_URL } from "../App";
 
-const HomePage = () => {
+const IndexPage = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +26,7 @@ const HomePage = () => {
         <div className="container mx-auto p-4">
             <div className="mb-4 flex justify-between items-center">
                 <h1 className="text-2xl font-bold">Welcome to Our Store</h1>
-                <Link to="#" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <Link to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Login
                 </Link>
             </div>
@@ -50,4 +50,4 @@ const HomePage = () => {
     );
 };
 
-export default HomePage;
+export default IndexPage;
