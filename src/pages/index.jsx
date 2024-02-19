@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { VITE_BACKEND_URL } from "../App";
@@ -108,7 +108,7 @@ const IndexPage = () => {
                     </label>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {isLoading ? (
                     <div className="text-center">Loading...</div>
                 ) : filteredProducts.length > 0 ? (
