@@ -43,7 +43,7 @@ const App = () => {
       </div>
       <ToastContainer/>
 
-      <footer className="bg-purple-600 fixed bottom-0 w-full">
+      <footer className="bg-purple-600">
     <div className="container mx-auto py-8 px-4 flex justify-between items-center">
         <div>
             <Link to="/about" className="text-white text-2xl font-bold hover:text-blue-200">Kanta Online Merchant Store</Link>
