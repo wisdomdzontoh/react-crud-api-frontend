@@ -6,6 +6,8 @@ import { VITE_BACKEND_URL } from "../App";
 const IndexPage = () => {
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
 
     const getProducts = async () => {
         try {
@@ -22,6 +24,21 @@ const IndexPage = () => {
         getProducts();
     }, []);
 
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
+    const handleCategoryChange = (category) => {
+        setSelectedCategory(category);
+    };
+
+    const filteredProducts = products.filter((product) => {
+        return (
+            product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            (selectedCategory === "" || product.category === selectedCategory)
+        );
+    });
+
     return (
         <div className="container mx-auto p-4">
             <div className="mb-8 flex justify-between items-center">
@@ -35,11 +52,67 @@ const IndexPage = () => {
                     </Link>
                 </div>
             </div>
+            <div className="mb-6 flex items-center">
+                <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={handleSearch}
+                    placeholder="Search products"
+                    className="border border-gray-300 rounded-md p-2 mr-4 focus:outline-none focus:border-blue-500"
+                />
+                <div className="flex items-center">
+                    <span className="mr-4">Filter by Category:</span>
+                    <label className="inline-flex items-center mr-4">
+                        <input
+                            type="radio"
+                            name="category"
+                            value=""
+                            checked={selectedCategory === ""}
+                            onChange={() => handleCategoryChange("")}
+                            className="form-radio h-5 w-5 text-blue-600"
+                        />
+                        <span className="ml-2">All</span>
+                    </label>
+                    <label className="inline-flex items-center mr-4">
+                        <input
+                            type="radio"
+                            name="category"
+                            value="electronics"
+                            checked={selectedCategory === "electronics"}
+                            onChange={() => handleCategoryChange("electronics")}
+                            className="form-radio h-5 w-5 text-blue-600"
+                        />
+                        <span className="ml-2">Electronics</span>
+                    </label>
+                    <label className="inline-flex items-center mr-4">
+                        <input
+                            type="radio"
+                            name="category"
+                            value="clothing"
+                            checked={selectedCategory === "clothing"}
+                            onChange={() => handleCategoryChange("clothing")}
+                            className="form-radio h-5 w-5 text-blue-600"
+                        />
+                        <span className="ml-2">Clothing</span>
+                    </label>
+                    <label className="inline-flex items-center mr-4">
+                        <input
+                            type="radio"
+                            name="category"
+                            value="books"
+                            checked={selectedCategory === "books"}
+                            onChange={() => handleCategoryChange("books")}
+                            className="form-radio h-5 w-5 text-blue-600"
+                        />
+                        <span className="ml-2">Books</span>
+                    </label>
+                </div>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {isLoading ? (
                     <div className="text-center">Loading...</div>
-                ) : products.length > 0 ? (
-                    products.map((product) => (
+                ) : filteredProducts.length > 0 ? (
+                    filteredProducts.map((product) => (
                         <div key={product.id} className="bg-white shadow-md p-6 rounded-md transition duration-300 hover:shadow-lg">
                             <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
                             <div className="text-xl font-semibold mb-2 text-gray-800">{product.name}</div>
