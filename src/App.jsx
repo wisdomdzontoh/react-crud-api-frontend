@@ -16,10 +16,18 @@ const App = () => {
   return (
     <div>
       <nav className="bg-purple-600">
-        <div className="container mx-auto p-2">
-          <Link to="/"><h2 className="text-white text-2xl font-bold">Kanta Online Merchant Store</h2></Link>
+    <div className="container mx-auto p-2 flex justify-between items-center">
+        <Link to="/">
+            <h2 className="text-white text-2xl font-bold">Kanta Online Merchant Store</h2>
+        </Link>
+        <div className="flex space-x-4">
+            <Link to="/about" className="text-white font-medium hover:text-blue-200">About</Link>
+            <Link to="/contact" className="text-white font-medium hover:text-blue-200">Contact</Link>
+            <Link to="/faq" className="text-white font-medium hover:text-blue-200">FAQ</Link>
         </div>
-      </nav>  
+    </div>
+</nav>
+ 
 
       <div className="container mx-auto p-2 h-full">     
         <Routes>
@@ -33,7 +41,7 @@ const App = () => {
       </div>
       <ToastContainer/>
 
-      <footer className="bg-purple-600">
+      <footer className="bg-purple-600 fixed bottom-0 w-full">
     <div className="container mx-auto py-8 px-4 flex justify-between items-center">
         <div>
             <Link to="/about" className="text-white text-2xl font-bold hover:text-blue-200">Kanta Online Merchant Store</Link>
@@ -48,6 +56,7 @@ const App = () => {
         </div>
     </div>
 </footer>
+
 
     </div>
   );
