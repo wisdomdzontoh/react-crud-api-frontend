@@ -113,7 +113,7 @@ const IndexPage = () => {
                     <div className="text-center">Loading...</div>
                 ) : filteredProducts.length > 0 ? (
                     filteredProducts.map((product) => (
-                        <div key={product.id} className="bg-white shadow-md p-6 rounded-md transition duration-300 hover:shadow-lg">
+                        <div key={product.id} className="bg-white shadow-md p-2 rounded-md transition duration-300 hover:shadow-lg">
                             <img src={product.image} alt={product.name} className="w-full h-48 object-cover mb-4 rounded-md" />
                             <div className="text-xl font-semibold mb-2 text-gray-800">{product.name}</div>
                             <div className="text-gray-500 mb-2">Price: ₵{product.price}</div>
