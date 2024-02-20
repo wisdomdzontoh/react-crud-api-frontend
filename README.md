@@ -19,3 +19,4 @@ To start the application run the below command
 ```sh
 npm run dev
 ```
+![image](https://github.com/wisdomdzontoh/react-crud-api-frontend/assets/91122756/f3845cb4-40ec-4674-886f-2271251e978c)
