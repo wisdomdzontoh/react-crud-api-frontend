@@ -15,7 +15,7 @@ export const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const App = () => {
   return (
     <div>
-      <nav className="bg-purple-600">
+    <nav className="bg-purple-600">
     <div className="container mx-auto p-2 flex justify-between items-center">
         <Link to="/">
             <h2 className="text-white text-2xl font-bold">Kanta Online Merchant Store</h2>
@@ -24,6 +24,15 @@ const App = () => {
             <Link to="/about" className="text-white font-medium hover:text-blue-200">About</Link>
             <Link to="/contact" className="text-white font-medium hover:text-blue-200">Contact</Link>
             <Link to="/faq" className="text-white font-medium hover:text-blue-200">FAQ</Link>
+            {/* Add the login and admin buttons here */}
+            <div>
+                <Link to="/login" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded">
+                    Login
+                </Link>
+                <Link to="/home" className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Admin
+                </Link>
+            </div>
         </div>
     </div>
 </nav>
@@ -33,12 +42,14 @@ const App = () => {
 
       <div className="container mx-auto p-2 h-full">     
         <Routes>
+       
         <Route index element={<IndexPage/>}></Route>
           <Route path="/home" element={<HomePage/>}></Route>
           <Route path="/create" element={<CreatePage/>}></Route>
           <Route path="/edit/:id" element={<EditPage/>}></Route>
           <Route path="/about" element={<AboutPage/>}></Route>
           <Route path="/login" element={<LoginPage/>}></Route>
+          
         </Routes>
       </div>
       <ToastContainer/>

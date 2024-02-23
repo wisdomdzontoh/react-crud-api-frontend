@@ -43,14 +43,7 @@ const IndexPage = () => {
         <div className="container mx-auto p-4">
             <div className="mb-8 flex justify-between items-center">
                 <h1 className="text-3xl font-bold text-gray-800">Welcome to Our Store</h1>
-                <div>
-                    <Link to="/login" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mr-4 rounded">
-                        Login
-                    </Link>
-                    <Link to="/home" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Admin
-                    </Link>
-                </div>
+                
             </div>
             <div className="container flex mx-auto mb-6 items-center">
                 <input
